@@ -16,5 +16,10 @@ namespace Bookish.Web.Controllers
         {
             return View(repo.GetAllBooks());
         }
+
+        public ActionResult BorrowedBooks()
+        {
+            return View(repo.GetMyBorrowedBooks(1));
+        }
     }
 }
