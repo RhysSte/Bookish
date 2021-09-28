@@ -32,14 +32,22 @@ namespace Bookish.DataAccess
             return Connection.Query<User>("SELECT * FROM users");
         }
 
-        public IEnumerable<Copies> GetAllCopies(int ID)
+        public IEnumerable<Copies> GetAllCopies(int Id)
         {
-            return Connection.Query<Copies>($"SELECT * FROM copies WHERE Books_ID = {ID}");
+            return Connection.Query<Copies>($"SELECT * FROM copies WHERE Books_ID = {Id}");
         }
 
-        public IEnumerable<Copies> GetMyBorrowedBooks(int userID)
+        public IEnumerable<Copies> GetMyBorrowedBooks(int userId)
         {
-            return Connection.Query<Copies>($"SELECT * FROM copies WHERE Borrowed_By_ID = {userID}");
+            return Connection.Query<Copies>($"SELECT * FROM copies WHERE Borrowed_By_ID = {userId}");
+        }
+
+        //make new method, get book
+        //pass in id and it gives book
+
+        public Book GetBook(int bookId)
+        {
+            return Connection.QuerySingle<Book>($"SELECT * FROM book WHERE Book_ID = {bookId}");
         }
 
         public IEnumerable<Book> SearchBooks(string searchString)
@@ -47,18 +55,9 @@ namespace Bookish.DataAccess
             return Connection.Query<Book>($"SELECT * FROM copies WHERE UserID = {searchString}");
         }
 
-        public Book GetBook(int Id)
+        public int AddBook (string BookName, int ISBN, string Author)
         {
-            //Get book
-            //get copies
-            //return book
-        }
-
-        public AddBook(Book book int numCopies)
-        {
-            // get all users
-            // borrow book(int bookID, int userId, DateTime dueDate
+            return Connection.QuerySingle<int>($"INSERT INTO Books(Title, Author, ISBN) VALUES({BookName}, {Author}, {ISBN}); SELECT SCOPE_IDENTITY()");
         }
     }
-
 }
