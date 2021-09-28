@@ -36,6 +36,8 @@ namespace Bookish
                 Console.WriteLine(book.Name.PadRight(20) + book.Author.PadRight(20) + borrowed.Borrowed_By_ID.ToString().PadRight(20) + borrowed.Copy_ID);
             }
             Console.ReadLine();
+
+            // for each for searching 
         }
     }
 }

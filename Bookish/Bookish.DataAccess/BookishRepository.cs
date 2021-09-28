@@ -52,7 +52,7 @@ namespace Bookish.DataAccess
 
         public IEnumerable<Book> SearchBooks(string searchString)
         {
-            return Connection.Query<Book>($"SELECT * FROM copies WHERE UserID = {searchString}");
+            return Connection.Query<Book>($"SELECT * FROM book WHERE Name CONTAINS {searchString}");
         }
 
         public int AddBook (string BookName, int ISBN, string Author)
