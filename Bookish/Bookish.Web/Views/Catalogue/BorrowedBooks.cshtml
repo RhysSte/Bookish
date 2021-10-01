@@ -1,9 +1,12 @@
 ﻿@using Bookish.DataAccess;
 
+
 @model IEnumerable<Copies>
 @{
     ViewBag.Title = "BorrowedBooks";
 }
+
+@System.Web.HttpContext.Current.User.Identity.Name
 
 <h2>BorrowedBooks</h2>
 <form>
@@ -23,8 +26,8 @@
     {
         <tr>
             @*@{var books = Model.GetBook(borrowed.Books_ID);}
-            <td style="border: 1px solid black; padding-left: 12px;">@books.Name</td>
-            <td style="border: 1px solid black; padding-left: 12px;">@books.Author</td>*@
+                <td style="border: 1px solid black; padding-left: 12px;">@books.Name</td>
+                <td style="border: 1px solid black; padding-left: 12px;">@books.Author</td>*@
             <td style="border: 1px solid black; padding-left: 12px;">@borrowed.Borrowed_By_ID</td>
             <td style="border: 1px solid black; padding-left: 12px;">@borrowed.Copy_ID</td>
         </tr>

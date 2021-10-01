@@ -57,13 +57,14 @@ namespace Bookish.DataAccess
 
         public int AddUser(string UserName)
         {
-            return Connection.QuerySingle<int>($"INSERT INTO users(UserName) VALUES({UserName}); SELECT SCOPE_IDENTITY()");
+            return Connection.QuerySingle<int>($"INSERT INTO users(UserName) VALUES('{UserName}'); SELECT SCOPE_IDENTITY()");
         }
 
         public int getUserId(string userName)
         {
             //input method here
-            var user = Connection.QuerySingle<User>($"SELECT * FROM users WHERE Name={userName}");
+            var query = $"SELECT * FROM users WHERE UserName='{userName}'";
+            var user = Connection.QuerySingle<User>(query);
             return user.User_Id;
         }
     }
