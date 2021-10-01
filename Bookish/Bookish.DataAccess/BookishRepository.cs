@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using Dapper;
 
 namespace Bookish.DataAccess
@@ -55,9 +50,21 @@ namespace Bookish.DataAccess
             return Connection.Query<Book>($"SELECT * FROM book WHERE Name CONTAINS {searchString}");
         }
 
-        public int AddBook (string BookName, int ISBN, string Author)
+        public int AddBook (string Name, int isbn, string Author)
         {
-            return Connection.QuerySingle<int>($"INSERT INTO Books(Title, Author, ISBN) VALUES({BookName}, {Author}, {ISBN}); SELECT SCOPE_IDENTITY()");
+            return Connection.QuerySingle<int>($"INSERT INTO book(Title, Author, ISBN) VALUES({Name}, {Author}, {isbn}); SELECT SCOPE_IDENTITY()");
+        }
+
+        public int AddUser(string UserName)
+        {
+            return Connection.QuerySingle<int>($"INSERT INTO users(UserName) VALUES({UserName}); SELECT SCOPE_IDENTITY()");
+        }
+
+        public int getUserId(string userName)
+        {
+            //input method here
+            var user = Connection.QuerySingle<User>($"SELECT * FROM users WHERE Name={userName}");
+            return user.User_Id;
         }
     }
 }

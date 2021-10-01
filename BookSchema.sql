@@ -6,9 +6,9 @@ USE Bookish;
 
 CREATE TABLE users(
 	User_ID int NOT NULL PRIMARY KEY IDENTITY(1,1),
-	Name VARCHAR(255) NOT NULL,
+	Name VARCHAR(255),
 	UserName VARCHAR(255) NOT NULL, 
-	Password VARCHAR(255) NOT NULL
+	Password VARCHAR(255)
 );
 
 CREATE TABLE book(
@@ -27,13 +27,3 @@ CREATE TABLE copies (
 	FOREIGN KEY (Borrowed_By_ID) REFERENCES users(User_ID),
 	Due_Date DATE
 );
-
-INSERT INTO users(Name) Values ('Rhys');
-INSERT INTO users(Name) Values ('Rodney');
-INSERT INTO book(Name) Values ('Harry Plopper');
-
-INSERT INTO book(Name, Book_ID) Values('Harry Potter And the Chamber Of Secrets', 1)
-
-SELECT * FROM users WHERE Name = 'Rhys';
-
-SELECT * FROM users;

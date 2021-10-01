@@ -49,7 +49,6 @@
   <ItemGroup>
     <Compile Include="Book.cs" />
     <Compile Include="BookishRepository.cs" />
-    <Compile Include="Class1.cs" />
     <Compile Include="Copies.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />

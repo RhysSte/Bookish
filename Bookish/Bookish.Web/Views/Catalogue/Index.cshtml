@@ -8,18 +8,20 @@
 
 <h2>Index</h2>
 <table cellpadding='3' cellspacing='3' style=' border: 1px solid black; font-size: 12pt; font-family: Arial; width: 100%; align-content: center;'>
-<tr style = "font-weight: bold; border: 1px solid black; background: #000; color :white;">
-    <th style="text-align: center">Book Name</th>
-    <th style="text-align: center">Book Author</th>
-    <th style="text-align: center">Book Genre</th>
-</tr>
+    <tr style="font-weight: bold; border: 1px solid black; background: #000; color: white;">
+        <th style="text-align: center">Book ID</th>
+        <th style="text-align: center">Book Name</th>
+        <th style="text-align: center">Book Author</th>
+        <th style="text-align: center">Book Genre</th>
+    </tr>
 
 @foreach (var book in Model)
 {  
-        <tr>
-            <td style = "border: 1px solid black; padding-left: 12px;">@book.Name</td>
-            <td style = "border: 1px solid black; padding-left: 12px;">@book.Author</td>
-            <td style = "border: 1px solid black; padding-left: 12px;">@book.Genre</td>
-        </tr>        
+    <tr>
+        <td style="text-align: center; padding: 2px;">@book.Book_ID</td>
+        <td style="text-align: center; padding: 2px; ">@book.Name</td>
+        <td style="text-align: center; padding: 2px; ">@book.Author</td>
+        <td style="text-align: center; padding: 2px; ">@book.Genre</td>
+    </tr>        
 }
 </table>   

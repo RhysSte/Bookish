@@ -18,15 +18,6 @@ namespace Bookish
                 Console.WriteLine(book.Name.PadRight(54) + book.Author.PadRight(21) + book.Genre.PadRight(21));
             }
 
-            //foreach (var user in bookRepo.GetAllUsers())
-            //{
-            //    Console.WriteLine(user.Name);
-            //}
-            
-            //borrow books
-            //br
-            //Console.WriteLine(Name of book, Author, who borrowed it ID, Copy ID);
-
             Console.WriteLine("\n BookName".PadRight(20) + "Author".PadRight(20) + "Who Borrowed It".PadRight(20) + "Copy ID");
 
             foreach (var borrowed in bookRepo.GetMyBorrowedBooks(4))
@@ -35,9 +26,13 @@ namespace Bookish
                 var book = bookRepo.GetBook(borrowed.Books_ID);
                 Console.WriteLine(book.Name.PadRight(20) + book.Author.PadRight(20) + borrowed.Borrowed_By_ID.ToString().PadRight(20) + borrowed.Copy_ID);
             }
-            Console.ReadLine();
 
-            // for each for searching 
+            var bookSearch = Console.ReadLine();
+            foreach (var search in bookRepo.SearchBooks(bookSearch))
+            {
+                Console.WriteLine(search.Name.PadRight(20), search.Author.PadRight(20), search.Author.PadRight(20));
+            }
+            Console.ReadLine();
         }
     }
 }
